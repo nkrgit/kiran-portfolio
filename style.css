@@ -332,10 +332,147 @@ footer {
   font-size: 0.8rem;
 }
 
-/* Animations */
-[data-aos] {
+/* 
+ * Section cards grid on the home page
+ * The cards act as portals into the respective modal sections.
+ */
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-card {
+  position: relative;
+  height: 200px;
+  color: var(--text-color);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: background var(--transition-speed);
+}
+
+.section-card h3 {
+  position: relative;
+  z-index: 2;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.section-card:hover::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/*
+ * Modal and overlay styling
+ * Each modal uses its own background image defined inline on the HTML element.
+ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
   opacity: 0;
-  transition-property: opacity, transform;
+  visibility: hidden;
+  transition: opacity var(--transition-speed);
+  z-index: 999;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  overflow-y: auto;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  color: var(--text-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform var(--transition-speed), opacity var(--transition-speed);
+  z-index: 1000;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-inner {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.modal .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.modal p,
+.modal li,
+.modal span {
+  color: var(--text-color);
+}
+
+/* Fine tune contact info within modal */
+.modal .contact-info a {
+  font-size: 1rem;
+}
+
+/* Remove AOS default styles as we no longer rely on the library */
+[data-aos] {
+  opacity: 1;
+  transform: none;
 }
 
 [data-aos].aos-animate {

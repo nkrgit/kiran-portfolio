@@ -9,13 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dNmQVnJTcAD1VmGSMjYjrVPSUBlgYLWwt3irsoTxFzNUKTsBWOQfb4UsZoiJVm1hHaMVVPRp9msGL+GkZrv5EA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- AOS animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-HoX1MZD2it9nmKN3t1UEU6KmO7we1Y5S+ZoW1KiF3WWMDL+BY2V3dIauudxYBq99lRy4QQNcQcfJ4XwcTOmsMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Custom styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Navigation with data attributes to trigger modals -->
   <nav>
     <div class="logo">Kiran</div>
     <div class="nav-toggle">
@@ -24,30 +22,251 @@
       <span></span>
     </div>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="education.html">Education</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="certifications.html">Certifications</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#" data-section="about">About</a></li>
+      <li><a href="#" data-section="education">Education</a></li>
+      <li><a href="#" data-section="experience">Experience</a></li>
+      <li><a href="#" data-section="projects">Projects</a></li>
+      <li><a href="#" data-section="skills">Skills</a></li>
+      <li><a href="#" data-section="certifications">Certifications</a></li>
+      <li><a href="#" data-section="contact">Contact</a></li>
+      <!-- Blog remains a separate page placeholder -->
       <li><a href="blog.html">Blog</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section id="home" class="hero">
     <div class="hero-content">
       <h1>Welcome to Kiran’s Portfolio</h1>
       <p>Embark on a journey where data meets creativity. Join me as I transform numbers into narratives and algorithms into adventures.</p>
       <div class="cta">
-        <a href="about.html" class="btn primary">Explore My Journey</a>
+        <a href="#" class="btn primary" data-section="about">About Me</a>
         <a href="assets/Resume_Naga_GenAI.pdf" class="btn" download>Download Resume</a>
       </div>
     </div>
   </section>
 
+  <!-- Grid of section cards -->
+  <section class="section-grid">
+    <div class="section-card" data-section="education" style="background-image: url('assets/education_bg.png');">
+      <h3>Education</h3>
+    </div>
+    <div class="section-card" data-section="experience" style="background-image: url('assets/experience_bg.png');">
+      <h3>Experience</h3>
+    </div>
+    <div class="section-card" data-section="projects" style="background-image: url('assets/projects_bg.png');">
+      <h3>Projects</h3>
+    </div>
+    <div class="section-card" data-section="skills" style="background-image: url('assets/skills_bg.png');">
+      <h3>Skills</h3>
+    </div>
+    <div class="section-card" data-section="certifications" style="background-image: url('assets/certifications_bg.png');">
+      <h3>Certifications</h3>
+    </div>
+    <div class="section-card" data-section="contact" style="background-image: url('assets/contact_bg.png');">
+      <h3>Contact</h3>
+    </div>
+  </section>
+
+  <!-- Modal overlay -->
+  <div class="modal-overlay"></div>
+
+  <!-- About Modal -->
+  <div id="about-modal" class="modal" style="background-image: url('assets/hero.png');">
+    <div class="modal-inner">
+      <span class="close">&times;</span>
+      <h2>About Me</h2>
+      <p>I am Naga Kiran Reddy Karnati, a data scientist with over five years of experience developing and optimizing data and machine learning pipelines. My journey spans industries and continents—from banking and wealth management analytics in New York to research‑oriented projects in India. Along the way I've built dashboards for leadership, designed generative AI solutions, and mentored teams to deliver high‑impact results.</p>
+      <p>I thrive at the intersection of data and storytelling, blending rigorous analysis with creative problem solving. My toolkit includes Python, R, SQL and a host of ML libraries like Scikit‑learn, TensorFlow and PyTorch. Whether it's training transformer networks on AWS SageMaker, reducing runtimes with efficient SQL, or experimenting with reinforcement learning algorithms, I'm passionate about pushing the boundaries of what's possible with AI.</p>
+      <p>Outside of coding, I stay up to date with developments in generative AI and RAG methods, explore AR/VR technologies, and enjoy sharing my knowledge through mentorship and research collaborations.</p>
+    </div>
+  </div>
+
+  <!-- Education Modal -->
+  <div id="education-modal" class="modal" style="background-image: url('assets/education_bg.png');">
+    <div class="modal-inner">
+      <span class="close">&times;</span>
+      <h2>Education</h2>
+      <div class="education-item">
+        <h3>Master of Science in Machine Learning and IoT</h3>
+        <span>Aug&nbsp;2021 – Feb&nbsp;2023 | University at Buffalo, SUNY, Buffalo, NY</span>
+        <p>CGPA: 4 / 4</p>
+        <p>Coursework included advanced machine learning, Internet of Things, deep learning, and cloud computing. Led hands‑on projects involving IoT analytics, generative models, and distributed systems.</p>
+      </div>
+      <div class="education-item">
+        <h3>B.Tech in Electronics and Communications Engineering</h3>
+        <span>Jul&nbsp;2015 – May&nbsp;2019 | NIT Surat (SVNIT), Surat, India</span>
+        <p>CGPA: 9.04 / 10 (Top 4)</p>
+        <p>Focused on signal processing, digital communications, and embedded systems. Participated in numerous technical societies and headed the ADCS Group, nurturing my interest in data science and machine learning.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience Modal -->
+  <div id="experience-modal" class="modal" style="background-image: url('assets/experience_bg.png');">
+    <div class="modal-inner">
+      <span class="close">&times;</span>
+      <h2>Professional Experience</h2>
+      <div class="experience-item">
+        <h3>Solution Intelligence Specialist</h3>
+        <span>Apr&nbsp;2023 – Present | TD Bank & Bank of Montreal (Essex Lake Group LLC), New York</span>
+        <p>Designed and implemented over fifty controls to detect regulatory and policy breaches in the U.S. credit‑card business, protecting the bank from compliance risks and ensuring operational integrity. Leveraging SAS, Python and SQL, created reusable code templates that reduced runtime by 40% and manual intervention by 30% while preparing the pipeline for cloud migration to Azure.</p>
+        <p>Defined risk thresholds and analysed millions of records to provide leadership with 99% accurate assessments. Transformed 20+ code runs into a single click process, complete with built‑in quality checks and automated email alerts. Mentored team members, streamlined data ingestion with advanced SQL macros and sub‑queries, and reduced processing time from six hours to two.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Data Scientist</h3>
+        <span>Jul&nbsp;2019 – Aug&nbsp;2021 | Researchwire Knowledge Solutions, Navi Mumbai, India</span>
+        <p>Led initiatives to deploy transformer architectures for named entity recognition and question answering tasks, increasing F1 scores and accuracy over baseline models. Orchestrated end‑to‑end machine learning workflows using AWS SageMaker integrated with Lambda, S3 and Glue, improving training efficiency by 60% and saving $50,000 annually.</p>
+        <p>Developed QA models that outperformed baselines by 20% by fine‑tuning pre‑trained transformers, and explored reinforcement learning algorithms to deliver robust solutions. Work spanned Python and R and included large‑scale data processing in AWS environments.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Data Scientist Intern &amp; ADCS Group Head</h3>
+        <span>Jan&nbsp;2018 – Jun&nbsp;2019 | NIT Surat, India</span>
+        <p>Engineered a character‑level language model using recurrent neural networks and reduced the vanishing/exploding gradient problem by 25% through gradient clipping. Explored sequential models such as RNNs, GRUs and LSTMs to optimise analysis tasks by 30% and employed Python and R for advanced analytics.</p>
+        <p>As head of the ADCS group, led research collaborations, mentored peers and cultivated a culture of innovation across campus.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Modal -->
+  <div id="projects-modal" class="modal" style="background-image: url('assets/projects_bg.png');">
+    <div class="modal-inner">
+      <span class="close">&times;</span>
+      <h2>Projects</h2>
+      <div class="project-item">
+        <h3>GenAI with LLMs</h3>
+        <span>Jan&nbsp;2023 – Feb&nbsp;2023 | Python, AWS SageMaker, Large Language Models</span>
+        <p>Explored the cutting edge of generative AI by training large language models with data parallelism and Microsoft’s ZeRO optimisations, reducing computational costs by 40% without sacrificing performance.</p>
+        <p>Applied Reinforcement Learning from Human Feedback (RLHF) to align model outputs with human values, improving user satisfaction by 50%. Retrieval‑Augmented Generation (RAG) further enhanced answer precision and reduced hallucinations using the LangChain framework.</p>
+      </div>
+      <div class="project-item">
+        <h3>Fleet Scheduling using Multi‑Agent DDPG</h3>
+        <span>Apr&nbsp;2022 – May&nbsp;2022 | Python, OpenAI Gym, Multi‑Agent RL</span>
+        <p>Designed and implemented a multi‑agent DDPG algorithm to optimise vehicle routing on a 10,000&nbsp;×&nbsp;10,000 grid. The system increased orders served by 20% and reduced average delivery time by 30% through cooperative learning.</p>
+        <p>Investigated off‑policy algorithms like Q‑learning and SARSA to learn from historical data, enabling efficient policy improvement and value estimation in complex environments.</p>
+      </div>
+      <div class="project-item">
+        <h3>Transfer Learning using MobileNet_v1</h3>
+        <span>Feb&nbsp;2022 – Mar&nbsp;2022 | Python, TensorFlow, Scikit‑learn, OpenCV</span>
+        <p>Leveraged transfer learning with MobileNet_v1 to build an image classification pipeline achieving 92% accuracy on a diverse dataset. Fine‑tuning pre‑trained weights cut training time in half while maintaining high accuracy.</p>
+        <p>Employed Grad‑CAM visualisations for model interpretability and collaborated with domain experts to customise the architecture for specific use cases, resulting in tailored solutions across applications.</p>
+      </div>
+      <div class="project-item">
+        <h3>Optimising Deep Neural Networks</h3>
+        <span>Dec&nbsp;2021 – Jan&nbsp;2022 | Python, TensorFlow, Scikit‑learn</span>
+        <p>Experimented with various optimisation methods including SGD, Momentum, RMSProp and Adam to accelerate convergence by 15%. Deploying random mini‑batches and learning‑rate scheduling reduced training times by 25% and doubled overall training speed.</p>
+        <p>Further explored ensemble methods such as bagging and boosting to combine multiple models, realising a 15% improvement in predictive accuracy.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills Modal -->
+  <div id="skills-modal" class="modal" style="background-image: url('assets/skills_bg.png');">
+    <div class="modal-inner">
+      <span class="close">&times;</span>
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <div class="skill">
+          <h4>Python</h4>
+          <div class="progress-bar"><span data-width="95%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>R</h4>
+          <div class="progress-bar"><span data-width="80%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>SQL</h4>
+          <div class="progress-bar"><span data-width="90%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Java / C / C++</h4>
+          <div class="progress-bar"><span data-width="65%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Pyspark / Scala</h4>
+          <div class="progress-bar"><span data-width="70%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>TensorFlow</h4>
+          <div class="progress-bar"><span data-width="90%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>PyTorch</h4>
+          <div class="progress-bar"><span data-width="85%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Scikit‑learn / LightGBM</h4>
+          <div class="progress-bar"><span data-width="90%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Pandas / NumPy</h4>
+          <div class="progress-bar"><span data-width="95%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Data Visualisation (Seaborn, Matplotlib, Plotly)</h4>
+          <div class="progress-bar"><span data-width="85%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>NLP &amp; Gen‑AI (NLTK, spaCy, Hugging Face)</h4>
+          <div class="progress-bar"><span data-width="85%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Big Data (Hadoop, Spark, Kafka, Airflow)</h4>
+          <div class="progress-bar"><span data-width="75%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Cloud Platforms (AWS / GCP / Azure)</h4>
+          <div class="progress-bar"><span data-width="70%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Tableau / Power BI / Excel</h4>
+          <div class="progress-bar"><span data-width="80%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Docker / Kubernetes</h4>
+          <div class="progress-bar"><span data-width="60%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Leadership &amp; Mentorship</h4>
+          <div class="progress-bar"><span data-width="80%"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certifications Modal -->
+  <div id="certifications-modal" class="modal" style="background-image: url('assets/certifications_bg.png');">
+    <div class="modal-inner">
+      <span class="close">&times;</span>
+      <h2>Certifications</h2>
+      <ul class="certification-list">
+        <li>Machine Learning Specialisation</li>
+        <li>Deep Learning Specialisation</li>
+        <li>Generative AI with LLMs</li>
+        <li>AWS Machine Learning</li>
+        <li>Natural Language Processing Specialisation</li>
+        <li>Advanced SAS SQL, Power BI &amp; AWS Data Science Essentials</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="modal" style="background-image: url('assets/contact_bg.png');">
+    <div class="modal-inner">
+      <span class="close">&times;</span>
+      <h2>Contact</h2>
+      <p>If you'd like to discuss an opportunity, collaborate on a project, or simply say hello, feel free to reach out via any of the channels below.</p>
+      <div class="contact-info">
+        <a href="mailto:nagakiranreddy2@gmail.com"><i class="fas fa-envelope"></i> nagakiranreddy2@gmail.com</a>
+        <a href="tel:+17165339305"><i class="fas fa-phone"></i> +1&nbsp;716&nbsp;533&nbsp;9305</a>
+        <a href="https://github.com/nkrgit" target="_blank" rel="noopener"><i class="fab fa-github"></i> github.com/nkrgit</a>
+        <a href="https://www.linkedin.com/in/nkr1/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> linkedin.com/in/nkr1</a>
+        <a href="https://www.kaggle.com/nagakiranreddy2" target="_blank" rel="noopener"><i class="fab fa-kaggle"></i> kaggle.com/nagakiranreddy2</a>
+      </div>
+      <p style="margin-top:1rem;">Clicking the email link will open your default mail client. Your information stays private and secure.</p>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -55,7 +274,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-Hbe4y1PxFmaGjMgNXvXyEx9mnbjSzLDF6zjnRfZbaaf68ZrU8eYPXmyTr7LZ7hXfL4IQpJWNR3iqCd5OOmVeFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,16 +1,16 @@
-/*
- * JavaScript for interactivity on Kiran's portfolio
+/**
+ * JavaScript for Kiran's interactive portfolio.
  *
- * Handles the responsive navigation toggle and animates skill progress bars
- * when they come into view. Uses the AOS (Animate On Scroll) library for
- * scroll-based animations.
+ * This script handles:
+ *  - Navigation menu toggle on mobile devices
+ *  - Opening and closing modal overlays when section links or cards are clicked
+ *  - Animating skill progress bars when the Skills modal opens
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Navigation menu toggle for mobile
+  // Mobile navigation toggle
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('nav ul');
-
   if (navToggle) {
     navToggle.addEventListener('click', () => {
       navMenu.classList.toggle('open');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close navigation when clicking a link on mobile
+  // Close nav when clicking a link (useful for mobile)
   navMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('open');
@@ -26,34 +26,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Animate skill progress bars when visible
-  const progressBars = document.querySelectorAll('.progress-bar span');
-  const animateProgressBars = () => {
-    progressBars.forEach(bar => {
+  // Function to animate skill bars
+  const animateSkills = () => {
+    document.querySelectorAll('.progress-bar span').forEach(bar => {
       const target = bar.getAttribute('data-width');
       bar.style.width = target;
     });
   };
 
-  // Use IntersectionObserver to trigger progress animation
-  const skillsSection = document.getElementById('skills');
-  if (skillsSection) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateProgressBars();
-          observer.unobserve(skillsSection);
-        }
-      });
-    }, { threshold: 0.3 });
-    observer.observe(skillsSection);
-  }
-
-  // Initialise AOS animations
-  if (window.AOS) {
-    AOS.init({
-      duration: 800,
-      once: true
+  // Function to reset skill bars to zero width
+  const resetSkills = () => {
+    document.querySelectorAll('.progress-bar span').forEach(bar => {
+      bar.style.width = 0;
     });
-  }
+  };
+
+  // Open a given modal by section name
+  const openModal = (section) => {
+    const overlay = document.querySelector('.modal-overlay');
+    const modal = document.getElementById(`${section}-modal`);
+    if (!modal || !overlay) return;
+
+    overlay.classList.add('active');
+    modal.classList.add('active');
+
+    // Lock body scroll
+    document.body.style.overflow = 'hidden';
+
+    // If opening skills modal, animate bars
+    if (section === 'skills') {
+      animateSkills();
+    }
+  };
+
+  // Close all modals
+  const closeModals = () => {
+    const overlay = document.querySelector('.modal-overlay');
+    overlay?.classList.remove('active');
+
+    document.querySelectorAll('.modal.active').forEach(modal => {
+      modal.classList.remove('active');
+    });
+
+    // Unlock body scroll
+    document.body.style.overflow = '';
+
+    // Reset skill bars when closing
+    resetSkills();
+  };
+
+  // Attach click handlers to nav links and section cards
+  document.querySelectorAll('[data-section]').forEach(element => {
+    element.addEventListener('click', (e) => {
+      e.preventDefault();
+      const section = element.getAttribute('data-section');
+      if (section) {
+        openModal(section);
+      }
+    });
+  });
+
+  // Close buttons within modals
+  document.querySelectorAll('.modal .close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      closeModals();
+    });
+  });
+
+  // Clicking on overlay closes modals
+  const overlay = document.querySelector('.modal-overlay');
+  overlay?.addEventListener('click', () => {
+    closeModals();
+  });
 });

@@ -6,7 +6,7 @@
   <title>Contact | Kiran's Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dNmQVnJTcAD1VmGSMjYjrVPSUBlgYLWwt3irsoTxFzNUKTsBWOQfb4UsZoiJVm1hHaMVVPRp9msGL+GkZrv5EA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-HoX1MZD2it9nmKN3t1UEU6KmO7we1Y5S+ZoW1KiF3WWMDL+BY2V3dIauudxYBq99lRy4QQNcQcfJ4XwcTOmsMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Removed AOS for this page as animations are handled differently -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -40,23 +40,15 @@
       <a href="https://www.kaggle.com/nagakiranreddy2" target="_blank" rel="noopener"><i class="fab fa-kaggle"></i> kaggle.com/nagakiranreddy2</a>
     </div>
     
-    <h3 style="margin-top:2rem;">Send a Message</h3>
-    <form action="mailto:nagakiranreddy2@gmail.com" method="post" enctype="text/plain" style="max-width: 500px; margin-top: 1rem;">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required style="width:100%; padding:0.5rem; margin:0.5rem 0; border-radius:4px; border:none; background:rgba(255,255,255,0.1); color:var(--text-color);">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin:0.5rem 0; border-radius:4px; border:none; background:rgba(255,255,255,0.1); color:var(--text-color);">
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required style="width:100%; padding:0.5rem; margin:0.5rem 0; border-radius:4px; border:none; background:rgba(255,255,255,0.1); color:var(--text-color);"></textarea>
-      <button type="submit" class="btn primary">Send</button>
-    </form>
+    <!-- Removed contact form as mailto forms trigger not secure warnings; instead, encourage direct contact via the links above -->
+    <p style="margin-top:2rem;">Use the links above to reach me directly. Clicking the email link will open your default mail client.</p>
   </section>
   
   <footer>
     &copy; 2025 Naga Kiran Reddy Karnati. All rights reserved.
   </footer>
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-Hbe4y1PxFmaGjMgNXvXyEx9mnbjSzLDF6zjnRfZbaaf68ZrU8eYPXmyTr7LZ7hXfL4IQpJWNR3iqCd5OOmVeFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- script.js handles the navigation toggle and modal logic across pages -->
   <script src="script.js"></script>
 </body>
 </html>
